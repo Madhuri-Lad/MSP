@@ -127,6 +127,42 @@ if st.button("Hide Separate plots"):
         hide_plot=False    
 
 
+show_plots1=False
+if st.button('Compare plots'):
+    if not show_plots1:
+        fig.add_trace(go.Scatter(x=data["Date"],y=data[column],mode='lines', name='Actual', line=dict(color='blue')))
+#add predicted data to the plot
+        fig.add_trace(go.Scatter(x=predictions["Date"],y=predictions['predicted_mean'],mode='lines', name='Predicted', line=dict(color='red')))
+#set the titel and axis labels
+        fig.update_layout(title='Actual v/s Predicted',xaxis_title='Date',yaxis_title='Price',width=800,height=400)
+#display plot
+        st.plotly_chart(fig)
+
+        newend_date=end_date + timedelta(days=forcast_period)
+
+        data=yf.download(ticker,start=start_date,end=newend_date)
+
+        data.insert(0,"Date",data.index,True)
+        data.reset_index(drop=True,inplace=True)
+        # st.write('Data from', start_date ,'to' ,end_date )
+        # st.write(data)
+
+        fig1=go.Figure()
+
+        fig1.add_trace(go.Scatter(x=data["Date"],y=data[column],mode='lines', name='Actual', line=dict(color='blue')))
+        fig1.update_layout(title='Actual',xaxis_title='Date',yaxis_title='Price',width=800,height=400)
+        st.plotly_chart(fig1)
+        
+        
+        
+        show_plots=True
+
+hide_plot1=False
+if st.button("Hide compared plots"):
+    if not hide_plot1:
+        hide_plot1=True
+    else:
+        hide_plot1=False  
 st.write("---")
 
 st.write("<p style='color:Blue; font-weight:bold; font-size:50px;'>Created by:- Madhuri Lad & Pallavi Jha</p>",unsafe_allow_html=True)
