@@ -130,13 +130,14 @@ if st.button("Hide Separate plots"):
 show_plots1=False
 if st.button('Compare plots'):
     if not show_plots1:
-        fig.add_trace(go.Scatter(x=data["Date"],y=data[column],mode='lines', name='Actual', line=dict(color='blue')))
-#add predicted data to the plot
-        fig.add_trace(go.Scatter(x=predictions["Date"],y=predictions['predicted_mean'],mode='lines', name='Predicted', line=dict(color='red')))
-#set the titel and axis labels
-        fig.update_layout(title='Actual v/s Predicted',xaxis_title='Date',yaxis_title='Price',width=800,height=400)
-#display plot
-        st.plotly_chart(fig)
+        fig2=go.Figure()
+        fig2.add_trace(go.Scatter(x=data["Date"],y=data[column],mode='lines', name='Actual', line=dict(color='blue')))
+
+        fig2.add_trace(go.Scatter(x=predictions["Date"],y=predictions['predicted_mean'],mode='lines', name='Predicted', line=dict(color='red')))
+
+        fig2.update_layout(title='Predicted',xaxis_title='Date',yaxis_title='Price',width=800,height=400)
+
+        #st.plotly_chart(fig2)
 
         newend_date=end_date + timedelta(days=forcast_period)
 
@@ -147,11 +148,11 @@ if st.button('Compare plots'):
         # st.write('Data from', start_date ,'to' ,end_date )
         # st.write(data)
 
-        fig1=go.Figure()
+        #fig1=go.Figure()
 
-        fig1.add_trace(go.Scatter(x=data["Date"],y=data[column],mode='lines', name='Actual', line=dict(color='blue')))
-        fig1.update_layout(title='Actual',xaxis_title='Date',yaxis_title='Price',width=800,height=400)
-        st.plotly_chart(fig1)
+        fig2.add_trace(go.Scatter(x=data["Date"],y=data[column],mode='lines', name='Real', line=dict(color='green')))
+        fig2.update_layout(title='Actual',xaxis_title='Date',yaxis_title='Price',width=800,height=400)
+        st.plotly_chart(fig2)
         
         
         
