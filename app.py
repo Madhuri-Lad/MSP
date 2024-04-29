@@ -18,7 +18,7 @@ app_name='Stock marketing analysis'
 st.title(app_name)
 st.subheader('This App is created to forcast the stock market price of the selected company')
 # add an image
-st.image('https://m.economictimes.com/thumb/msid-102245149,width-400,height-350,resizemode-4,imgsize-104000/unleashing-the-bulls-how-the-stock-market-achieved-unprecedented-record-levels.jpg')
+st.image('https://m.economictimes.com/thumb/msid-102245149,width-400,height-250,resizemode-4,imgsize-104000/unleashing-the-bulls-how-the-stock-market-achieved-unprecedented-record-levels.jpg')
 
 # take input from user
 st.sidebar.header('Select the parametes from below')
