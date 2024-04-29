@@ -81,7 +81,7 @@ st.header('Model Summary')
 st.write(model.summary())
 st.write("---")
 
-st.write("<p style='color:green; font-size:50px; font-weight:bold;'>Forcasting the data</p>",unsafe_allow_html=True)
+st.write("<p style='color:green; font-size:50px; font-weight:bold;width:250;'>Forcasting the data</p>",unsafe_allow_html=True)
 
 
 #predit the future values(Forcasting)
